@@ -1,0 +1,7 @@
+entrypoint = "README.md"
+run = "sh startup.sh"
+hidden = ["startup_py.sh", "startup.sh", "sql_data"]
+language = "php"
+
+[nix]
+channel = "stable-21_11"

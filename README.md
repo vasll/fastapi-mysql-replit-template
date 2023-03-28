@@ -1,0 +1,1 @@
+# FastAPI + MySQL replit template
