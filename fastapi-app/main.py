@@ -14,9 +14,13 @@ schemas.Base.metadata.create_all(bind=engine)  # [OPTIONAL] Create all db tables
 
 
 # Routes
-@app.get("/", description="index")
+@app.get("/", description="page index")
 async def index():
-	return {'detail': "FastAPI is working! To get started visit the FastAPI docs or explore this api's example routes by going to https://[REPL URL]/docs"}
+	return {
+		'detail': 'FastAPI is working!',
+		'description': "To get started visit the FastAPI docs or explore this example API's docs by going to https://[YOUR REPL URL]/docs",
+		'fastapi_docs': 'https://fastapi.tiangolo.com/'
+	}
 
 
 @app.get("/items/", tags=['items'], response_model=List[models.Item], description="Gets all items from the 'items' table")
