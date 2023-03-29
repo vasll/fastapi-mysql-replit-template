@@ -3,8 +3,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
-# Database credentials
-# Username, password and database_name are loaded from secrets/envvars
+# For more information: [https://fastapi.tiangolo.com/tutorial/sql-databases/]
+# Database vars. Username, password and database_name are loaded from secrets
 username = os.getenv('db_user')
 password = os.getenv('db_pass')
 database_name = os.getenv('db_name')

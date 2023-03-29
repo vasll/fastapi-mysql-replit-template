@@ -1,10 +1,9 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Text
 from database import Base
 
-class User(Base):
-	""" Represents the user schema """
-	__tablename__ = "users"
+class Item(Base):
+	""" Represents an item in the database. For demonstration purposes """
+	__tablename__ = "items"
 	id = Column(Integer, primary_key=True, index=True, autoincrement=True)
-	nickname = Column(String(16), nullable=False, unique=True)
-	email = Column(String(320), nullable=False, unique=True)
-	password = Column(String(255), nullable=False, unique=True)
+	name = Column(String(128), nullable=False, unique=True)
+	description = Column(Text, nullable=True, unique=True)

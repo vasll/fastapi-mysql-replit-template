@@ -5,22 +5,22 @@ from sqlalchemy.orm import Session
 import uvicorn
 import schemas
 
-
 #FastAPI
 app = FastAPI()
-schemas.Base.metadata.create_all(bind=engine)  # Create all db tables if they don't exist on startup
+schemas.Base.metadata.create_all(bind=engine)  # [OPTIONAL] Create all db tables present in schemas.py if they don't exist
+
 
 # Routes
 @app.get("/")
 async def index(db:Session = Depends(get_database)):
-	db_users = [user for user in db.query(schemas.User).all()]  # Fetch all users from db
+	database_items = db.query(schemas.Item).all()  # Fetch all items from db
 	return {
 		'detail': 'FastAPI is working',
-		'users': db_users
+		'items': database_items
 	}
 
 
-# Run the uvicorn development web server. 
+# Run the uvicorn development web server
 # Code from: https://www.uvicorn.org/deployment/
 if __name__ == "__main__":
 	uvicorn.run('main:app', host="0.0.0.0", port=5000, log_level="info", reload=True)
