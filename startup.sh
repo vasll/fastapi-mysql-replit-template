@@ -14,9 +14,9 @@ if [ -z ${db_pass+x} ]; then
 	echo "[startup.sh] Secret 'db_pass' is not set";
  	are_secrets_unset=true
 fi
-if [ "$are_secrets_unset" = true ]; then
+if [ "$are_secrets_unset" = true ]; then	# If at least one of the secrets is missing show a message and exit
 	echo "[startup.sh] ERROR: Required secrets are NOT set, read the README.md first"
- 	echo "For more information on secrets, visit https://docs.replit.com/programming-ide/workspace-features/storing-sensitive-information-environment-variables"
+ 	echo "For more information on replit secrets, visit [https://docs.replit.com/programming-ide/workspace-features/storing-sensitive-information-environment-variables]"
     exit
 fi
 
@@ -30,6 +30,7 @@ if [ ! -d "$MYSQL_HOME" ]; then
     fresh_install=true
     mkdir "$MYSQL_HOME"
 else
+	echo "[startup.sh] MySQL found"
     fresh_install=false
 fi
 
@@ -98,4 +99,6 @@ if [ "$is_venv_new" = true ]; then
 fi
 
 # Start the mysql server as a background task with the parameters in $MYSQL_HOME/my.cnf, then the python main.py file
+
+echo "[startup.sh] Starting MySQL server & main.py"
 mysqld_safe & python "$HOME/$REPL_SLUG/fastapi-app/main.py" && fg
