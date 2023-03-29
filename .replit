@@ -1,7 +1,8 @@
 entrypoint = "README.md"
-run = "sh ./startup.sh"
+
+run = "sh ./startup.sh"	 # The .sh script that runs the MySQL server and FastAPI app
+
 hidden = [
-	"startup_py.sh", 
  	"startup.sh",
   	"sql_data", 
 	".git",
@@ -10,6 +11,12 @@ hidden = [
   	".venv"
 ]
 language = "python"
+
+
+[env]
+VENV_PATH = "/home/runner/${REPL_SLUG}/.venv"  # Path of python venv [https://docs.python.org/3/library/venv.html]
+MYSQL_HOME = "/home/runner/${REPL_SLUG}/sql_data"  # Path of mysql installation
+
 
 [nix]
 channel = "stable-21_11"
