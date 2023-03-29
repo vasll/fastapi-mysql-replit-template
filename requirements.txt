@@ -1,0 +1,6 @@
+fastapi
+sqlalchemy
+uvicorn
+gunicorn
+sqlalchemy
+pymysql

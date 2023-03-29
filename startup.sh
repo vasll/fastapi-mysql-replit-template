@@ -1,14 +1,8 @@
 #! /bin/sh
+# Forked from replit.com/@dprevedello/PHP-MySQL
 export MYSQL_HOME=$HOME/$REPL_SLUG/sql_data
 
-# clean shutdown of existing database
-mariadb-admin shutdown 2> /dev/null
-
-#read -p "Cancello sql data? (y/n)" response
-if [ "$response" == "y" ]; then
-    rm -rf "$MYSQL_HOME"
-    read -p "Continuo..." response
-fi
+mariadb-admin shutdown 2 > /dev/null	# shutdown of existing database (if any)
 
 # run mysql as background task
 # note: data directory assumed to be called 'sql_data'

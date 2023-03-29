@@ -1,7 +1,15 @@
 entrypoint = "README.md"
-run = "sh startup.sh"
-hidden = ["startup_py.sh", "startup.sh", "sql_data"]
-language = "php"
+run = "sh ./startup_py.sh"
+hidden = [
+	"startup_py.sh", 
+ 	"startup.sh",
+  	"sql_data", 
+	".git",
+ 	"__pycache__", 
+  	"**/__pycache__", "**/.mypy_cache", "**/*.pyc",
+  	".venv"
+]
+language = "python"
 
 [nix]
 channel = "stable-21_11"
