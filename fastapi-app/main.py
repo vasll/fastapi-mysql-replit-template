@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from sqlalchemy.exc import IntegrityError
 from database import get_database, engine
-from fastapi import Depends
+from fastapi import Depends, HTTPException
 from sqlalchemy.orm import Session
 from typing import List
 import uvicorn
@@ -14,27 +14,28 @@ schemas.Base.metadata.create_all(bind=engine)  # [OPTIONAL] Create all db tables
 
 
 # Routes
-@app.get("/")
+@app.get("/", description="index")
+async def index():
+	return {'detail': "FastAPI is working! To get started visit the FastAPI docs or explore this api's example routes by going to https://[REPL URL]/docs"}
+
+
+@app.get("/items/", tags=['items'], response_model=List[models.Item], description="Gets all items from the 'items' table")
 async def get_items(db:Session = Depends(get_database)):
-	""" """
-	database_items = db.query(schemas.Item).all()  # Fetch all items from db
-	return {
-		'detail': 'FastAPI is working',
-		'items': database_items
-	}
+	items = db.query(schemas.Item).all()  # Get all items from db
+	return [i.__dict__ for i in items]	#  Return all items as dicts inside of a List
 
 
-@app.post("/", response_model=List[models.Item])
+@app.post("/items/", tags=['items'], response_model=List[models.Item], description="Inserts an item into the 'items' table")
 async def insert_item(item: models.Item, db:Session = Depends(get_database)):
-	""" """
 	db.add(schemas.Item(id=item.id, name=item.name, description=item.description))
 	
 	try:
 		db.commit()
 	except IntegrityError as _:
-		return {'detail': 'Integrity error. Item with that id already exists'}
+		raise HTTPException(status_code=422, detail=f'Integrity error: Item with id {item.id} already exists')
 	
-	return [i.__dict__ for i in db.query(schemas.Item).all()]	# Return all items
+	items = db.query(schemas.Item).all()  # Get all items from db
+	return [i.__dict__ for i in items]	#  Return all items as dicts inside of a List
 		
 
 # Run the uvicorn development web server

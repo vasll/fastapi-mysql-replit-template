@@ -4,3 +4,4 @@ uvicorn
 gunicorn
 sqlalchemy
 pymysql
+pydantic

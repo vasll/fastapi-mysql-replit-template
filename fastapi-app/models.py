@@ -7,4 +7,3 @@ class Item(BaseModel):
     id: Optional[int] = None    # Default is autoincrement
     name: str
     description: str
-    code: str
