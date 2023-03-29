@@ -1,5 +1,5 @@
 entrypoint = "README.md"
-run = "sh ./startup_py.sh"
+run = "sh ./startup.sh"
 hidden = [
 	"startup_py.sh", 
  	"startup.sh",
