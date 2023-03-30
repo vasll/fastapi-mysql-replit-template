@@ -16,6 +16,7 @@ language = "python"
 [env]
 VENV_PATH = "/home/runner/${REPL_SLUG}/.venv"  # Path of python venv [https://docs.python.org/3/library/venv.html]
 MYSQL_HOME = "/home/runner/${REPL_SLUG}/sql_data"  # Path of mysql installation
+APP_DIR_NAME = "app"  # Name of the folder containing the FastAPI and main.py files
 
 [nix]
 channel = "stable-22_11"

@@ -101,4 +101,4 @@ fi
 # Start the mysql server as a background task with the parameters in $MYSQL_HOME/my.cnf, then the python main.py file
 
 echo "[startup.sh] Starting MySQL server & main.py"
-mysqld_safe & python "$HOME/$REPL_SLUG/fastapi-app/main.py" && fg
+mysqld_safe & python "$HOME/$REPL_SLUG/$APP_DIR_NAME/main.py" && fg
