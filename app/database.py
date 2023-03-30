@@ -20,8 +20,8 @@ Base = declarative_base()	# This Base is used in schemas.py to create the schema
 
 # Database dependency [https://fastapi.tiangolo.com/tutorial/sql-databases/#create-a-dependency]
 def get_database():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
+	db = SessionLocal()
+	try:
+		yield db
+	finally:
+		db.close()

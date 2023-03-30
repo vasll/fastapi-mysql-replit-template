@@ -8,7 +8,7 @@ from typing import Optional
 
 # For example, this Item class is a representation of an entry in the 'items' schema in the database
 class Item(BaseModel):
-    """ Data model representation of an item in the database. (For demonstration purposes) """
-    id: Optional[int] = None    # Default is autoincrement
-    name: str
-    description: str
+	""" Data model representation of an item in the database. (For demonstration purposes) """
+	id: Optional[int] = None    # Default is autoincrement
+	name: str
+	description: str

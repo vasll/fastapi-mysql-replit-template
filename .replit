@@ -3,12 +3,12 @@ entrypoint = "README.md"
 run = "sh ./startup.sh"	 # The .sh script that runs the MySQL server and FastAPI app
 
 hidden = [
- 	"startup.sh",
-  	"sql_data", 
+	"startup.sh",
+	"sql_data",
 	".git",
- 	"__pycache__", 
-  	"**/__pycache__", "**/.mypy_cache", "**/*.pyc",
-  	".venv"
+	"__pycache__",
+	"**/__pycache__", "**/.mypy_cache", "**/*.pyc",
+	".venv"
 ]
 
 language = "python"
