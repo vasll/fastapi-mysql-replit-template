@@ -3,7 +3,7 @@
 This template allows you to run a FastAPI server and a MySQL database on Replit.
 
 ## Getting started
-1. Fork this template
+1. Fork this template. You can fork it on replit [from here](https://replit.com/@vasll/FastAPI-MySQL)
 2. Inside the [secrets tab](https://docs.replit.com/programming-ide/workspace-features/storing-sensitive-information-environment-variables) in the replit tools add the following:
 	- `db_user` Name of the user that will have full access to the db
 	- `db_pass` Password for the user
@@ -19,7 +19,7 @@ Contains example FastAPI code to connect to a database using [SQLAlchemy](https:
 - `models.py`: contains models based on db schemas, used for data validation
 
 ### `startup.sh` 
-Creates a venv in `.venv/`and installs a MySQL server instance into `sql_data/`
+Creates a venv in `.venv/` and installs a MySQL server instance into `sql_data/`
 
 ## Credits
 The MySQL database creation .sh script was forked from this repl: [@dprevedello/PHP-MySQL](https://replit.com/@dprevedello/PHP-MySQL)
